@@ -1,0 +1,11 @@
+body{
+	background-color:rgba(40,40,40,1);
+	background-image:url('../../../bundles/movieuser/images/clap_login.png');
+	background-repeat:no-repeat;
+	background-position-y:100px;
+}
+.well{
+	background-color:rgba(40,40,40,1) !important;
+	border-color:rgba(137,137,137,1) !important;
+	color:rgba(137,137,137,1) !important;
+}

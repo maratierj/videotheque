@@ -1,0 +1,11 @@
+{# src/Movie/ListBundle/Resources/views/MovieList/menu.html.twig #}
+
+<ul class="nav nav-pills nav-stacked">
+  {% for movie in listMovies %}
+    <li>
+      <a href="{{ path('movie_list_view', {'movie_id': movie.id}) }}">
+        {{ movie.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

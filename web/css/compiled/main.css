@@ -1,0 +1,32 @@
+body{
+	background-color:rgba(40,40,40,1);
+	color:rgba(137,137,137,1) !important;
+}
+.navbar{
+	background-color:rgba(40,40,40,1) !important;
+	border-color:rgba(137,137,137,1) !important;
+	color:rgba(137,137,137,1) !important;
+	
+	margin-top:20px;
+	font-weight:bold;
+}
+.navbar a{
+	color:rgba(137,137,137,1) !important;
+}
+.navbar a:hover{
+	color:rgba(66,139,202,1)!important;
+}
+.navbar a.unlink{
+	cursor:default;
+	float:none;
+}
+.navbar a.unlink:hover{
+	cursor:default;
+	color:rgba(137,137,137,1) !important;
+}
+.navbar-toggle{
+	border:none;
+}
+.navbar-toggle:hover{
+	background-color:rgba(40,40,40,1) !important;	
+}

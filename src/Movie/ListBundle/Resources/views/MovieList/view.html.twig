@@ -1,0 +1,40 @@
+{# src/Movie/ListBundle/Resources/views/Movie/view.html.twig #}
+
+{% extends "MovieListBundle::layoutBundleMovie.html.twig" %}
+
+{% block title %}
+  Fiche d'un film - {{ parent() }}
+{% endblock %}
+	{% block body_title %}
+		<h1>Détail du film</h1>
+	{% endblock %}
+{% block movie_body %}
+	{% if movie.image %}
+		<img src="{{ asset(movie.image.webPath) }}" alt="{{ movie.title }}" title="{{ movie.title }}" />	
+	{% else %}
+		<img src="{{ asset('coreImages/movie_default.png') }}" alt="{{ movie.title }}" title="{{ movie.title }}" />	
+	{% endif %}
+	
+  <h2>{{ movie.title }}</h2>
+  <i>nbDisc {{ movie.nbDisc }}, numMovie {{ movie.numMovie }}</i>
+
+  <div class="well">
+    
+  </div>
+
+  <p>
+    <a href="{{ path('movie_list_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+    <a href="{{ path('movie_list_edit', {'id': movie.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-edit"></i>
+      Modifier le film
+    </a>
+    <a href="{{ path('movie_list_delete', {'id': movie.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer le film
+    </a>
+  </p>
+
+{% endblock %}

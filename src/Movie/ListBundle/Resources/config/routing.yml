@@ -1,0 +1,27 @@
+movie_list_home:
+    path:     /{page}
+    defaults: { _controller: MovieListBundle:MovieList:index,page:1 }
+    requirements:
+        page: \d*
+
+movie_list_view:
+    path:      /movie/{movie_id}
+    defaults:  { _controller: MovieListBundle:MovieList:view,movie_id:42 }
+    requirements:
+        movie_id: '[0-9]+'
+
+movie_list_add:
+    path:      /add
+    defaults:  { _controller: MovieListBundle:MovieList:add }
+
+movie_list_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: MovieListBundle:MovieList:edit }
+    requirements:
+        id: '[0-9]+'
+
+movie_list_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: MovieListBundle:MovieList:delete }
+    requirements:
+        id: '[0-9]+'

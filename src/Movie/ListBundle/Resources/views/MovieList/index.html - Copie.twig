@@ -1,0 +1,27 @@
+{# src/Movie/ListBundle/Resources/views/MovieList/index.html.twig #}
+
+{% extends "MovieListBundle::layoutBundleMovie.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block movie_body %}
+
+  <h2>Liste des films</h2>
+
+  <ul>
+    {% for movie in listMovies %}
+      <li>
+        <a href="{{ path('movie_list_view', {'id': movie.id}) }}">
+          {{ movie.title }}
+        </a>
+        nbDisc {{ movie.nbDisc }},
+        numMovie {{ movie.numMovie }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) de films</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

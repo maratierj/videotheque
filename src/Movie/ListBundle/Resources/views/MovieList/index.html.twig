@@ -1,0 +1,33 @@
+{# src/Movie/ListBundle/Resources/views/MovieList/index.html.twig #}
+
+{% extends "MovieListBundle::layoutBundleMovie.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block movie_body %}
+
+  {% for movie in listMovies %}
+      <li>
+        <a href="{{ path('movie_list_view', {'movie_id': movie.id}) }}">
+          {{ movie.title }}
+        </a>
+        nbDisc {{ movie.nbDisc }},
+        numMovie {{ movie.numMovie }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) de films</li>
+    {% endfor %}
+  <ul class="pagination">
+    {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+	{% for p in range(1, nbPages) %}
+	<li{% if p == page %} class="active"{% endif %}>
+	  <a href="{{ path('movie_list_home', {'page': p}) }}">{{ p }}</a>
+	</li>
+	{% endfor %}
+  </ul>
+{% endblock %}
+
+
+

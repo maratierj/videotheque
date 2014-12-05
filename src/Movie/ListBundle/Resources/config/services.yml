@@ -1,0 +1,17 @@
+parameters:
+#    movie_list.example.class: Movie\ListBundle\Example
+    mon_parametre: ma_valeur
+
+services:
+#    movie_list.example:
+#        class: %movie_list.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    movie_list.verifdoublons:
+        class: Movie\ListBundle\VerifDoublons\MovieVerifDoublons
+#    movie_list.beta.html:
+#        class: Movie\ListBundle\Beta\BetaHTML
+#    movie_list.beta.listener:
+#        class: Movie\ListBundle\Beta\BetaListener
+#        arguments: [@movie_list.beta.html, "2014-11-20"]
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.response, method: processBeta }
