@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 // N'oubliez pas ce use pour l'annotation
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Movie\ListBundle\Entity\Movie;
 use Movie\ListBundle\Form\MovieType;
@@ -53,6 +54,7 @@ class MovieListController extends Controller
     }
 	
 	/**
+        * @Route("movie/{movie_id}", name="movie_list_view", options={"expose"=true}) 
 	* @ParamConverter("movie", options={"mapping": {"movie_id": "id"}})
 	*/
 	public function viewAction(Movie $movie)

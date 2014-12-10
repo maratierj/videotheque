@@ -11,8 +11,12 @@
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="@MovieListBundle/Resources/public/css/font-awesome-ie7.min.css">
+    <![endif]-->
 	{% stylesheets output="css/compiled/main.css" filter="cssrewrite" 
-	'@MovieListBundle/Resources/public/css/movie.css'
+            '@MovieListBundle/Resources/public/css/movie.css'
+            '@MovieListBundle/Resources/public/css/font-awesome.css'
 	%}
   <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
 {% endstylesheets %}
@@ -20,9 +24,9 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container">   
 <nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid">
+	<div class="container-fluid">            
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
@@ -33,15 +37,16 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="{{ path('movie_list_home') }}">Accueil</a></li>
-				<li><a href="{{ path('movie_list_add') }}">Ajouter un film</a></li>
+                            <li><a href="{{ path('movie_list_home') }}"><i class="icon-home icon-2x"></i></a></li>
+                            <li><a href="{{ path('movie_list_add') }}"><i class="icon-plus icon-2x"></i></a></li>
+                            <li><a href="#"><i class="icon-user icon-2x"></i></a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-						<a href="{{ path('fos_user_security_logout') }}" alt="Connecté en tant que {{ app.user.username }}" title="Connecté en tant que {{ app.user.username }}">Déconnexion</a>
+						<a href="{{ path('fos_user_security_logout') }}" alt="Connecté en tant que {{ app.user.username }}" title="Connecté en tant que {{ app.user.username }}"><i class="icon-signout icon-2x"></i></a>
 					{% else %}
-						<a href="{{ path('fos_user_security_login') }}">Connexion</a>
+						<a href="{{ path('fos_user_security_login') }}"><i class="icon-signin icon-2x"></i></a>
 					{% endif %}
 				</li>
 			</ul>
@@ -67,13 +72,15 @@
   </div>
 
   {% block javascripts %}
-	{# Ajoutez cette ligne JavaScript si vous comptez vous servir des balises HTML5 sur IE 9 et versions antérieures #}
+    {# Ajoutez cette ligne JavaScript si vous comptez vous servir des balises HTML5 sur IE 9 et versions antérieures #}
 	<!--[if lt IE 9]> <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 	{% javascripts output="js/compiled/core.js" 
-		'@MovieListBundle/Resources/public/js/movie.js'
+		'@MovieListBundle/Resources/public/js/*'
 		%}
 		<script src="{{ asset_url }}" charset="utf-8"></script>
 	{% endjavascripts %}
