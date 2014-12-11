@@ -12,3 +12,33 @@ function viewDetail(id){
         }
     });    
 }
+
+function addMovie(){
+    $.ajax({
+	type: "GET",
+	url: Routing.generate('movie_list_add'),
+	success: function(retour){
+            //alert(retour);
+            document.title = "Ajout d'un film";
+            $("#content").html(retour);
+	},
+        error : function(error){
+            alert('erreur : ' + error);
+        }
+    });    
+}
+
+function editMovie(id){
+    $.ajax({
+	type: "GET",
+	url: Routing.generate('movie_list_edit', {'id': id}),
+	success: function(retour){
+            //alert(retour);
+            document.title = "Modifier le film";
+            $("#content").html(retour);
+	},
+        error : function(error){
+            alert('erreur : ' + error);
+        }
+    });    
+}

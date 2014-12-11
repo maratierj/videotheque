@@ -77,6 +77,7 @@ class MovieListController extends Controller
 	}
 	
 	/**
+        * @Route("add", name="movie_list_add", options={"expose"=true})
 	* @Security("has_role('ROLE_ADMIN')")
 	*/
 	 public function addAction(Request $request)
@@ -113,7 +114,9 @@ class MovieListController extends Controller
 		  'form' => $form->createView(),
 		));
 	}
-
+        /**
+        * @Route("edit/{id}", name="movie_list_edit", options={"expose"=true})
+	*/
 	public function editAction($id, Request $request)
 	{
 		// Ici, on récupérera l'annonce correspondante à $id

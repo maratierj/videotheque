@@ -12,4 +12,16 @@ $(document).ready( function()
             var id = $(this).attr("id");
             viewDetail(id);
         });
+        
+        $(".movie-add").click(function(e){
+            e.preventDefault(); // Empêche le navigateur de suivre le lien.
+            addMovie();
+        });
+        
+        $(".test").click(function(e){
+            alert('coucou');
+            //e.preventDefault(); // Empêche le navigateur de suivre le lien.
+            //var id = $(this).attr("id");
+            //editMovie(id);
+        });
 });
