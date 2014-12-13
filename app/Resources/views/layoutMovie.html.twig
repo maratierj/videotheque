@@ -38,10 +38,13 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
                             <li><a href="{{ path('movie_list_home') }}"><i class="icon-home icon-2x"></i></a></li>
+                            <li><a href="#" class="movie-list"><i class="icon-list icon-2x"></i></a></li>
+                            <li><a href="#" class="movie-search"><i class="icon-search icon-2x"></i></a></li>
                             <li><a href="#" class="movie-add"><i class="icon-plus icon-2x"></i></a></li>
-                            <li><a href="#"><i class="icon-user icon-2x"></i></a></li>
+                            
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+                                <li><a href="#"><i class="icon-user icon-2x"></i></a></li>
 				<li>
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 						<a href="{{ path('fos_user_security_logout') }}" alt="Connecté en tant que {{ app.user.username }}" title="Connecté en tant que {{ app.user.username }}"><i class="icon-signout icon-2x"></i></a>

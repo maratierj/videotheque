@@ -23,12 +23,11 @@
   </div>
 
   <p>
-      <a href="#" class="test">réunion</a>
     <a href="{{ path('movie_list_home') }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>
       Retour à la liste
     </a>
-    <a href="{{ path('movie_list_edit', {'id': movie.id}) }}" class="btn btn-default">
+    <a href="#" class="btn btn-default movie-edit" id="{{movie.id}}">
       <i class="glyphicon glyphicon-edit"></i>
       Modifier le film
     </a>
@@ -39,3 +38,10 @@
   </p>
 
 {% endblock %}
+<script>
+$(".movie-edit").click(function(e){
+    e.preventDefault(); // Empêche le navigateur de suivre le lien.
+    var id = $(this).attr("id");
+    editMovie(id);
+});
+</script>

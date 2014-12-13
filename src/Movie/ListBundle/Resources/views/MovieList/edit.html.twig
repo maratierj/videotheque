@@ -1,9 +1,9 @@
 {# src/Movie/ListBundle/Resources/views/Movie/edit.html.twig #}
 
-{% extends "MovieListBundle::layoutBundleMovie.html.twig" %}
+{#{% extends "MovieListBundle::layoutBundleMovie.html.twig" %}#}
 
 {% block title %}
-  Modification d'un film - {{ parent() }}
+
 {% endblock %}
 
 {% block body_title %}
@@ -11,7 +11,7 @@
 	{% endblock %}
 {% block movie_body %}
 
-  <div class="well">
+  <div class="well well-movie">
     {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
 		{# Les erreurs générales du formulaire. #}
 		{{ form_errors(form) }}

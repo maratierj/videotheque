@@ -30,3 +30,8 @@ body{
 .navbar-toggle:hover{
 	background-color:rgba(40,40,40,1) !important;	
 }
+
+.well-movie{
+    background-color:rgba(40,40,40,1) !important;
+    border-color:rgba(137,137,137,1) !important;
+}
