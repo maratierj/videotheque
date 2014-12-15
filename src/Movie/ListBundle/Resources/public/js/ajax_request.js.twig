@@ -42,3 +42,46 @@ function editMovie(id){
         }
     });    
 }
+
+function searchMovie(){
+    $.ajax({
+	type: "GET",
+	url: Routing.generate('movie_list_search'),
+	success: function(retour){
+            //alert(retour);
+            document.title = "Rechercher un film";
+            $("#content").html(retour);
+	},
+        error : function(error){
+            alert('erreur : ' + error);
+        }
+    });    
+}
+
+function listMovie(){
+    $.ajax({
+	type: "GET",
+	url: Routing.generate('movie_list_list'),
+	success: function(retour){
+            document.title = "Liste des films";
+            $("#content").html(retour);
+	},
+        error : function(error){
+            alert('erreur : ' + error);
+        }
+    });    
+}
+
+function saveAddMovie(data){
+    $.ajax({
+        type: "POST",
+        url: Routing.generate('movie_list_add'),
+        data: data.serialize(),
+        dataType: "html",
+        success: function(result){
+            viewDetail(result);
+        },
+        error: function(){},
+        complete: function(){}
+    });
+}

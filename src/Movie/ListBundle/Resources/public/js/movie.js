@@ -17,4 +17,15 @@ $(document).ready( function()
             e.preventDefault(); // Empêche le navigateur de suivre le lien.
             addMovie();
         });
+        
+        $(".movie-search").click(function(e){
+            e.preventDefault(); // Empêche le navigateur de suivre le lien.
+            searchMovie();
+        });
+        
+        $(".movie-list").click(function(e){
+            e.preventDefault(); // Empêche le navigateur de suivre le lien.
+            listMovie();
+        });
+                
 });

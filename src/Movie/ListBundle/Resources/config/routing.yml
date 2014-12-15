@@ -25,3 +25,11 @@ movie_list_delete:
     defaults:  { _controller: MovieListBundle:MovieList:delete }
     requirements:
         id: '[0-9]+'
+
+movie_list_search:
+    path: /search
+    defaults: {_controller: MovieListBundle:MovieList:search}
+
+movie_list_list:
+    path: /list
+    defaults: {_controller: MovieListBundle:MovieList:list}

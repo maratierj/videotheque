@@ -14,6 +14,8 @@ use Movie\ListBundle\Entity\Movie;
 use Movie\ListBundle\Form\MovieType;
 use Movie\ListBundle\Form\MovieEditType;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class MovieListController extends Controller
 {	
     public function indexAction($page)
@@ -59,6 +61,7 @@ class MovieListController extends Controller
 	*/
 	public function viewAction(Movie $movie)
 	{
+                if($movie != null){
 		// $id vaut 5 si l'on a appelé l'URL /platform/advert/5
 
 		// Ici, on récupèrera depuis la base de données
@@ -73,7 +76,11 @@ class MovieListController extends Controller
 		  ->find($movie_id)
 		;*/
 
-		return $this->render('MovieListBundle:MovieList:view.html.twig', array('movie' => $movie));
+                    return $this->render('MovieListBundle:MovieList:view.html.twig', array('movie' => $movie));
+                }
+                else{
+                    echo 'coucou';
+                }
 	}
 	
 	/**
@@ -93,19 +100,25 @@ class MovieListController extends Controller
 
 		// On vérifie que les valeurs entrées sont correctes
 		// (Nous verrons la validation des objets en détail dans le prochain chapitre)
+                
 		if ($form->handleRequest($request)->isValid()) {
+                   
 		  // On l'enregistre notre objet $advert dans la base de données, par exemple
 		  $em = $this->getDoctrine()->getManager();
 		  $em->persist($movie);
+                  
+                  //echo $movie->getImage()->getUrl() . "<br/>" . $movie->getImage()->getUploadDir() . "<br/>" . $movie->getImage()->getWebPath();
 		  $em->flush();
 
-		  $request->getSession()->getFlashBag()->add('notice', 'film bien enregistré.');
-		  //echo $movie->getImage()->getUrl() . " coucoucoucoucoucoucocuoucuo" ;
+		  //$request->getSession()->getFlashBag()->add('notice', 'film bien enregistré.');
+//		  echo $movie->getImage()->getUrl() . " coucoucoucoucoucoucocuoucuo" ;
 		  //echo __DIR__;
 
 		  // On redirige vers la page de visualisation de l'annonce nouvellement créée
-		  return $this->redirect($this->generateUrl('movie_list_view', array('movie_id' => $movie->getId())));
+		  //return $this->redirect($this->generateUrl('movie_list_view', array('movie_id' => $movie->getId())));
+                  return new Response($movie->getId());
 		}
+                
 
 		// À ce stade, le formulaire n'est pas valide car :
 		// - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
@@ -192,4 +205,18 @@ class MovieListController extends Controller
 		  'listMovies' => $listMovies
 		));
 	}
+        
+        /**
+        * @Route("search", name="movie_list_search", options={"expose"=true})
+	*/
+        public function searchAction(){           
+            return $this->render('MovieListBundle:MovieList:search.html.twig');
+        }
+        
+        /**
+        * @Route("list", name="movie_list_list", options={"expose"=true})
+        */
+        public function listAction(){
+            return $this->render('MovieListBundle:MovieList:list.html.twig');
+        }
 }
