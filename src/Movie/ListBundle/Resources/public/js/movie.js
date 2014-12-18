@@ -14,6 +14,7 @@ $(document).ready( function()
         });
         
         $(".movie-add").click(function(e){
+            showLoader();
             e.preventDefault(); // Empêche le navigateur de suivre le lien.
             addMovie();
         });
@@ -29,3 +30,11 @@ $(document).ready( function()
         });
                 
 });
+
+function hideLoader(){
+    $(".loader-wrap").fadeOut(200);
+}
+
+function showLoader(){
+    $(".loader-wrap").fadeIn(200);
+}
