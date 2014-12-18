@@ -72,16 +72,35 @@ function listMovie(){
     });    
 }
 
-function saveAddMovie(data){
+function saveAddMovie(dataForm){
     $.ajax({
         type: "POST",
         url: Routing.generate('movie_list_add'),
-        data: data.serialize(),
-        dataType: "html",
+        xhr:function(){
+            myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload){
+                myXhr.upload.addEventListener('progress',setProgress,false);    
+            }
+            return myXhr;
+        },
+        //dataType: "html",
+        //Traitements AJAX
+        //Données du formulaire envoyé
+        data: dataForm,
+        beforeSend: function(){},
         success: function(result){
             viewDetail(result);
         },
         error: function(){},
-        complete: function(){}
+        //Options signifiant à jQuery de ne pas s'occuper du type de données
+        cache: false,
+        contentType: false,
+        processData: false
     });
+}
+
+function setProgress(e){
+    if(e.lengthComputable){
+        $('progress').attr({value:e.loaded,max:e.total});
+    }
 }

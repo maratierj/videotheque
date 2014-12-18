@@ -19,7 +19,7 @@ class MovieType extends AbstractType
 			->add('numMovie',   'integer')
 			->add('nbDisc',    'integer')
 			->add('isPret', 'checkbox', array('required' => false))
-			//->add('image', new ImageType())
+			->add('image', new ImageType())
 			->add('typeMovies','entity',array('class'=>'MovieListBundle:TypeMovie','property'=>'type','multiple'=>true))
 			->add('enregistrer','submit')
         ;

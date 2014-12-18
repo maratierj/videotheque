@@ -12,7 +12,7 @@
 {% block movie_body %}
 
   <div class="well well-movie">
-    {{ form_start(form,{'attr':{'class':'form-horizontal form-add'}}) }}
+    {{ form_start(form,{'attr':{'class':'form-horizontal form-add','enctype':'multipart/form-data'}}) }}
 		{# Les erreurs générales du formulaire. #}
 		{{ form_errors(form) }}
 		
@@ -61,16 +61,16 @@
 		</div>
 		
 		<!-- Sous formulaire image -->
-		{#<div class="form-group">
+		<div class="form-group">
 			{{form_label(form.image.file,"Image",{'label_attr':{'class':'col-sm-3 control-label'}})}}
-			{# Affichage des erreurs pour ce champ précis. 
+			{# Affichage des erreurs pour ce champ précis.#} 
 			{{ form_errors(form.image.file) }}
 			
 			<div class="col-sm-4">
-				{# Génération de l'input. 
+				{# Génération de l'input. #}
 				{{ form_widget(form.image.file, {'attr': {'class': 'file'}}) }}
 			</div>
-		</div>#}
+		</div>
 		
 		<!-- Sous formulaire type movie -->
 		<div class="form-group">
@@ -100,8 +100,8 @@
 <script>
     $(".form-add").submit(function(e){
         e.preventDefault(); // Empêche le navigateur de suivre le lien.
-        var data = $(this);
-        saveAddMovie(data);        
+        var dataForm = new FormData($('form')[0]);
+        saveAddMovie(dataForm); 
     });
 </script>
 
