@@ -10,9 +10,9 @@
 	{% endblock %}
 {% block movie_body %}
 	{% if movie.image %}
-		<img src="{{ asset(movie.image.webPath) }}" alt="{{ movie.title }}" title="{{ movie.title }}" />	
+		<img src="{{ movie.image.webPath | imagine_filter('movieThumb') }}" alt="{{ movie.title }}" title="{{ movie.title }}" />	
 	{% else %}
-		<img src="{{ asset('coreImages/movie_default.png') }}" alt="{{ movie.title }}" title="{{ movie.title }}" />	
+		<img src="{{ 'coreImages/movie_default.png' | imagine_filter('movieThumb') }}" alt="{{ movie.title }}" title="{{ movie.title }}" />	
 	{% endif %}
 	
   <h2>{{ movie.title }}</h2>

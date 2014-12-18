@@ -72,3 +72,15 @@ fos_user:
     db_driver:     orm                       # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
     firewall_name: main                      # Le nom du firewall derrière lequel on utilisera ces utilisateurs
     user_class:    Movie\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        movieThumb:
+            quality: 80
+            filters:
+                thumbnail: { size: [60, 95], mode: inset }

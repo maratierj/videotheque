@@ -31,3 +31,6 @@ fos_js_routing:
      
 fos_js_routing:
      routes_to_expose: [ (.*) ] 
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
