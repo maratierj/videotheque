@@ -1,8 +1,6 @@
 movie_list_home:
-    path:     /{page}
-    defaults: { _controller: MovieListBundle:MovieList:index,page:1 }
-    requirements:
-        page: \d*
+    path:     /
+    defaults: { _controller: MovieListBundle:MovieList:index }
 
 movie_list_view:
     path:      /movie/{movie_id}
@@ -31,5 +29,11 @@ movie_list_search:
     defaults: {_controller: MovieListBundle:MovieList:search}
 
 movie_list_list:
-    path: /list
-    defaults: {_controller: MovieListBundle:MovieList:list}
+    path: /list/{page}
+    defaults: {_controller: MovieListBundle:MovieList:list,page:1}
+    requirements:
+        page: \d*
+
+movie_home:
+    path: /home
+    defaults : {_controller: MovieListBundle:MovieList:home}

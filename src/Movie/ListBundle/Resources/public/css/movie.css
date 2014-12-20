@@ -4,12 +4,17 @@ body{
 }
 
 .navbar{
-	background-color:rgba(40,40,40,1) !important;
-	border-color:rgba(137,137,137,1) !important;
-	color:rgba(137,137,137,1) !important;
-	
-	margin-top:20px;
-	font-weight:bold;
+    background-color:rgba(34,34,34,1) !important;
+    /*border-color:rgba(137,137,137,1) !important;*/
+    color:rgba(137,137,137,1) !important;
+
+    margin-top:20px;
+    font-weight:bold;
+
+    border:none;
+    -moz-box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3),0px 2px 2px rgba(255,255,255,0.2);
+    -webkit-box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3),0px 2px 2px rgba(255,255,255,0.2);
+    box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3),0px 2px 2px rgba(255,255,255,0.2);
 }
 .navbar a{
 	color:rgba(137,137,137,1) !important;
@@ -29,12 +34,16 @@ body{
 	border:none;
 }
 .navbar-toggle:hover{
-	background-color:rgba(40,40,40,1) !important;	
+	background-color:rgba(37,40,37,1) !important;	
 }
 
 .well-movie{
-    background-color:rgba(40,40,40,1) !important;
-    border-color:rgba(137,137,137,1) !important;
+    background-color:rgba(34,34,34,1) !important;
+    /*border-color:rgba(137,137,137,1) !important;*/
+    border:none;
+    -moz-box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3),0px 2px 2px rgba(255,255,255,0.2);
+    -webkit-box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3),0px 2px 2px rgba(255,255,255,0.2);
+    box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.3),0px 2px 2px rgba(255,255,255,0.2);
 }
 
 

@@ -18,41 +18,42 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MovieListController extends Controller
 {	
-    public function indexAction($page)
+    public function indexAction()
     {
-		// On ne sait pas combien de pages il y a
-		// Mais on sait qu'une page doit être supérieure ou égale à 1
-		if ($page < 1) {
-		  // On déclenche une exception NotFoundHttpException, cela va afficher
-		  // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
-		  throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
-		}
-		
-		// Ici je fixe le nombre d'annonces par page à 3
-		// Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
-		$nbPerPage = 30;
+       /* // On ne sait pas combien de pages il y a
+        // Mais on sait qu'une page doit être supérieure ou égale à 1
+        if ($page < 1) {
+            // On déclenche une exception NotFoundHttpException, cela va afficher
+            // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
+            throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
+        }
 
-		$em = $this->getDoctrine()->getManager();
-		// On récupère tous les films
-		$listMovies = $em
-		  ->getRepository('MovieListBundle:Movie')
-		  ->getAllMovies($page, $nbPerPage)
-		;
+        // Ici je fixe le nombre d'annonces par page à 3
+        // Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
+        $nbPerPage = 30;
 
-		// On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
-		$nbPages = ceil(count($listMovies)/$nbPerPage);
+        $em = $this->getDoctrine()->getManager();
+        // On récupère tous les films
+        $listMovies = $em
+            ->getRepository('MovieListBundle:Movie')
+            ->getAllMovies($page, $nbPerPage)
+        ;
 
-		// Si la page n'existe pas, on retourne une 404
-		if ($page > $nbPages) {
-		  throw $this->createNotFoundException("La page ".$nbPages." n'existe pas.");
-		}
+        // On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
+        $nbPages = ceil(count($listMovies)/$nbPerPage);
 
-		// On donne toutes les informations nécessaires à la vue
-		return $this->render('MovieListBundle:MovieList:index.html.twig', array(
-		  'listMovies' => $listMovies,
-		  'nbPages'     => $nbPages,
-		  'page'        => $page
-		));
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbPages) {
+            throw $this->createNotFoundException("La page ".$nbPages." n'existe pas.");
+        }
+
+        // On donne toutes les informations nécessaires à la vue
+        return $this->render('MovieListBundle:MovieList:index.html.twig', array(
+            'listMovies' => $listMovies,
+            'nbPages'     => $nbPages,
+            'page'        => $page
+        ));*/
+        return $this->render('MovieListBundle:MovieList:index.html.twig');
     }
 	
 	/**
@@ -214,9 +215,48 @@ class MovieListController extends Controller
         }
         
         /**
-        * @Route("list", name="movie_list_list", options={"expose"=true})
+        * @Route("list/{page}", name="movie_list_list", options={"expose"=true})
         */
-        public function listAction(){
-            return $this->render('MovieListBundle:MovieList:list.html.twig');
+        public function listAction($page){
+            // On ne sait pas combien de pages il y a
+        // Mais on sait qu'une page doit être supérieure ou égale à 1
+        if ($page < 1) {
+            // On déclenche une exception NotFoundHttpException, cela va afficher
+            // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
+            throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
+        }
+
+        // Ici je fixe le nombre d'annonces par page à 3
+        // Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
+        $nbPerPage = 30;
+
+        $em = $this->getDoctrine()->getManager();
+        // On récupère tous les films
+        $listMovies = $em
+            ->getRepository('MovieListBundle:Movie')
+            ->getAllMovies($page, $nbPerPage)
+        ;
+
+        // On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
+        $nbPages = ceil(count($listMovies)/$nbPerPage);
+
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbPages) {
+            throw $this->createNotFoundException("La page ".$nbPages." n'existe pas.");
+        }
+
+        // On donne toutes les informations nécessaires à la vue
+        return $this->render('MovieListBundle:MovieList:list.html.twig', array(
+            'listMovies' => $listMovies,
+            'nbPages'     => $nbPages,
+            'page'        => $page
+        ));
+        }
+        
+        /**
+        * @Route("home", name="movie_home", options={"expose"=true})
+        */
+        public function homeAction(){
+            return $this->render('MovieListBundle:MovieList:home.html.twig');
         }
 }

@@ -1,9 +1,24 @@
+function homeMovie(){
+    $.ajax({
+	type: "GET",
+	url: Routing.generate('movie_home'),
+	success: function(retour){
+            hideLoader();
+            document.title = "Accueil";
+            $("#content").html(retour);
+	},
+        error : function(error){
+            alert('erreur : ' + error);
+        }
+    });    
+}
+
 function viewDetail(id){
     $.ajax({
 	type: "GET",
 	url: Routing.generate('movie_list_view', {'movie_id': id}),
 	success: function(retour){
-            //alert(retour);
+            hideLoader();
             document.title = "Fiche d'un film";
             $("#content").html(retour);
 	},
@@ -33,7 +48,7 @@ function editMovie(id){
 	type: "GET",
 	url: Routing.generate('movie_list_edit', {'id': id}),
 	success: function(retour){
-            //alert(retour);
+            hideLoader();
             document.title = "Modifier le film";
             $("#content").html(retour);
 	},
@@ -48,7 +63,7 @@ function searchMovie(){
 	type: "GET",
 	url: Routing.generate('movie_list_search'),
 	success: function(retour){
-            //alert(retour);
+            hideLoader();
             document.title = "Rechercher un film";
             $("#content").html(retour);
 	},
@@ -58,11 +73,12 @@ function searchMovie(){
     });    
 }
 
-function listMovie(){
+function listMovie(page){
     $.ajax({
 	type: "GET",
-	url: Routing.generate('movie_list_list'),
+	url: Routing.generate('movie_list_list',{'page': page}),
 	success: function(retour){
+            hideLoader();
             document.title = "Liste des films";
             $("#content").html(retour);
 	},

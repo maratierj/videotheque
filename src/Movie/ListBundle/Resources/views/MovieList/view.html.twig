@@ -40,6 +40,7 @@
 {% endblock %}
 <script>
 $(".movie-edit").click(function(e){
+    showLoader();
     e.preventDefault(); // Empêche le navigateur de suivre le lien.
     var id = $(this).attr("id");
     editMovie(id);

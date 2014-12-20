@@ -8,9 +8,16 @@ $(document).ready( function()
 	});
         
         $(".movie-last-add").click(function(e){
+            showLoader();
             e.preventDefault(); // Empêche le navigateur de suivre le lien.
             var id = $(this).attr("id");
             viewDetail(id);
+        });
+        
+        $(".movie-home").click(function(e){
+            showLoader();
+            e.preventDefault(); // Empêche le navigateur de suivre le lien.
+            homeMovie();
         });
         
         $(".movie-add").click(function(e){
@@ -20,13 +27,15 @@ $(document).ready( function()
         });
         
         $(".movie-search").click(function(e){
+            showLoader();
             e.preventDefault(); // Empêche le navigateur de suivre le lien.
             searchMovie();
         });
         
         $(".movie-list").click(function(e){
+            showLoader();
             e.preventDefault(); // Empêche le navigateur de suivre le lien.
-            listMovie();
+            listMovie(1);
         });
                 
 });
