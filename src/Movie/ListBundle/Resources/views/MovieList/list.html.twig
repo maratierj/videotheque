@@ -7,8 +7,9 @@
 	{% endblock %}
 {% block movie_body %}
 {% for movie in listMovies %}
-      <li>
-        <a href="#" class="movie-last-add" id="{{ movie.id }}">
+      <li class="li-list">
+          <i class="icon-ok movie-{{movie.isPret}}check"></i>
+        <a href="#" class="movie-view" id="{{ movie.id }}">
           {{ movie.title }}
         </a>
         nbDisc {{ movie.nbDisc }},
@@ -19,7 +20,7 @@
     {% endfor %}
   <ul class="pagination">
 	{% for p in range(1, nbPages) %}
-	<li{% if p == page %} class="active"{% endif %}>
+	<li{% if p == page %} class="active"{% endif %}>            
 	  <a href="#" class="list-pagination" id="{{ p }}">{{ p }}</a>
 	</li>
 	{% endfor %}
@@ -30,6 +31,12 @@
         e.preventDefault();
         var page = $(this).attr("id");
         listMovie(page);
+    });
+    $(".movie-view").click(function(e){
+        showLoader();
+        e.preventDefault(); // Empêche le navigateur de suivre le lien.
+        var id = $(this).attr("id");
+        viewDetail(id);
     });
     </script>
 {% endblock %}

@@ -37,3 +37,7 @@ movie_list_list:
 movie_home:
     path: /home
     defaults : {_controller: MovieListBundle:MovieList:home}
+
+movie_list_exchange:
+    path: /exchange
+    defaults : {_controller: MovieListBundle:MovieList:exchange}

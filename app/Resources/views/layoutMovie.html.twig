@@ -52,6 +52,7 @@
                             <li><a href="#" class="movie-list"><i class="icon-list icon-2x"></i></a></li>
                             <li><a href="#" class="movie-search"><i class="icon-search icon-2x"></i></a></li>
                             <li><a href="#" class="movie-add"><i class="icon-plus icon-2x"></i></a></li>
+                            <li><a href="#" class="movie-exchange"><i class="icon-exchange icon-2x"></i></a></li>
                             {#<li><a href="{{ path('movie_list_add') }}"><i class="icon-plus icon-2x"></i></a></li>#}
                             
 			</ul>
@@ -78,11 +79,10 @@
         {% endblock %}
       </div>
     </div>
-
-    <hr>
-
+    
     <footer>
-      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+        <div class="separator col-md-12"></div>
+        <p> © {{ 'now'|date('Y') }} </p>
     </footer>
   </div>
 

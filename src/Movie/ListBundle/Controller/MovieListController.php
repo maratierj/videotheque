@@ -259,4 +259,11 @@ class MovieListController extends Controller
         public function homeAction(){
             return $this->render('MovieListBundle:MovieList:home.html.twig');
         }
+        
+        /**
+        * @Route("exchange", name="movie_list_exchange", options={"expose"=true})
+        */
+        public function exchangeAction(){
+            return $this->render('MovieListBundle:MovieList:exchange.html.twig');
+        }
 }

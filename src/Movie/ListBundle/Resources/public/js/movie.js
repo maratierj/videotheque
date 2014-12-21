@@ -37,6 +37,12 @@ $(document).ready( function()
             e.preventDefault(); // Empêche le navigateur de suivre le lien.
             listMovie(1);
         });
+        
+        $(".movie-exchange").click(function(e){
+            showLoader();
+            e.preventDefault(); // Empêche le navigateur de suivre le lien.
+            exchangeMovie();
+        });
                 
 });
 
